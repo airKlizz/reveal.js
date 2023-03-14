@@ -1,54 +1,100 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+	<title>reveal.js</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/simple.css">
 
-		<!-- Load JSON file and update title -->
-		<script>
-			const xhr = new XMLHttpRequest();
-			xhr.open("GET", "translations/fr.json");
-			xhr.responseType = "json";
-			xhr.send();
+	<style type="text/css" media="screen">
+		.special-header {
+			position: absolute;
+			top: 10px;
+			left: -50vw;
+			width: calc(100% + 100vw);
+			z-index: 500;
+			text-align: center;
+			padding-block: 20px;
+			background-color: rgb(128, 128, 128, 60%);
+		}
 
-			xhr.onload = function() {
-				const data = xhr.response;
-				const titleElement = document.getElementById("title");
-				titleElement.textContent = data.title;
-			};
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section id="title">title</section>
-				<section>Slide 2</section>
-			</div>
+		.special-body {
+			margin: auto;
+			position: absolute;
+			top: 50%;
+			left: 0%;
+			/*-ms-transform: translate(-50%, 50%);*/
+			transform: translate(0%, -50%);
+		}
+
+		.slides>section {
+			width: 100%;
+			height: 100%;
+		}
+
+		.card-number {
+			position: absolute;
+			bottom: 8vh;
+			left: 6vw;
+			background-color: #71CED0;
+			color: white;
+			height: 120px;
+			width: 80px;
+			border-radius: 5px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	</style>
+
+	<!-- Load JSON file and update title -->
+	<script>
+		const xhr = new XMLHttpRequest();
+		xhr.open("GET", "translations/fr.json");
+		xhr.responseType = "json";
+		xhr.send();
+
+		xhr.onload = function () {
+			const data = xhr.response;
+			const titleElement = document.getElementById("title");
+			titleElement.textContent = data.title;
+		};
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background-image="./assets/activites-humaines.png">
+				<h1 class="special-header" id="title"></h1>
+				<div class="card-number">1</div>
+			</section>
+			<section class="recto" data-background-image="./assets/activites-humaines.png">
+				<h3>My title</h3>
+			</section>
 		</div>
+	</div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
 </html>
